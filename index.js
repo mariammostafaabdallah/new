@@ -1,6 +1,7 @@
 const express=require("express");
 const app=express();
 const mongoose=require("mongoose");
+const cors=require("cors");
 const productRoute =require("./routes/productRoute");
 const contentRoute =require("./routes/contentRoute");
 const Product=require('./models/Product');
@@ -12,7 +13,9 @@ console.log("connected")
 }).catch(err=>{
     console.log(err)
 });
-
+app.use(cors({
+  origin: '*'
+}));
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
